@@ -8,6 +8,7 @@
         <provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
 
         <class>com.ridecell.scooter.entities.Customer</class>
+        <class>com.ridecell.scooter.entities.Scooter</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
             <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema"/>

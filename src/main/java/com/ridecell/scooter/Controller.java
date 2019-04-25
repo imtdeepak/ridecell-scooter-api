@@ -2,7 +2,7 @@ package com.ridecell.scooter;
 
 
 import com.ridecell.scooter.entities.Customer;
-import com.ridecell.scooter.repositories.CustomerRepository;
+import com.ridecell.scooter.services.CustomerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,15 +14,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Created by deepakkumar on 4/24/19.
+ */
 
 @RestController
 public class Controller {
 
     private static final Logger logger = LoggerFactory.getLogger(Controller.class);
 
-
     @Autowired
-    private CustomerRepository customerRepository;
+    private CustomerService customerService;
 
     @GetMapping("/name")
     public ResponseEntity<?> getNames() {
@@ -49,20 +51,20 @@ public class Controller {
 
     @RequestMapping(value = {"/customer/{pathVariable}"}, method = RequestMethod.GET)
     public ResponseEntity<?> getCustomer(@PathVariable String pathVariable) {
-        Customer customer = customerRepository.findOne(Long.parseLong(pathVariable));
+        Customer customer = customerService.getCustomer(Long.parseLong(pathVariable));
         return new ResponseEntity<Object>(customer, HttpStatus.OK);
     }
 
     @RequestMapping(value = {"/customer"}, method = RequestMethod.GET)
     public ResponseEntity<?> getAllCustomer() {
-        Iterable<Customer> customers = customerRepository.findAll();
+        Iterable<Customer> customers = customerService.getAllCustomers();
         return new ResponseEntity<Object>(customers, HttpStatus.OK);
     }
 
     @RequestMapping(value = {"/customer"}, method = RequestMethod.POST)
     public ResponseEntity<?> saveCustomer(@RequestBody(required = true) Customer customer) {
-        customer = customerRepository.save(customer);
-        return new ResponseEntity<Object>(customer, HttpStatus.OK);
+        customer = customerService.saveCustomer(customer);
+        return new ResponseEntity<Object>(customer, HttpStatus.CREATED);
     }
 
 }

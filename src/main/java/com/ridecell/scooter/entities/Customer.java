@@ -8,6 +8,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.io.Serializable;
 
+/**
+ * Created by deepakkumar on 4/24/19.
+ */
+
 @Data
 @Entity
 public class Customer implements Serializable {

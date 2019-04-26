@@ -32,7 +32,7 @@ public class Controller {
     @Autowired
     private ScooterService scooterService;
 
-    //    /api/v1/scooters/available?lat=37.788989&lng=-122.404810&radius=20.0
+    //GET  /api/v1/scooters/available?lat=37.788989&lng=-122.404810&radius=20.0
 
     @RequestMapping(value = {"/scooters/available"}, params = {"lat", "lng", "radius"}, method = RequestMethod.GET)
     public ResponseEntity<?> getAllScooters(@RequestParam("lat") double lat, @RequestParam("lng") double lng, @RequestParam("radius") double radius) {
@@ -54,29 +54,6 @@ public class Controller {
         return new ResponseEntity<Object>(returnStatus, HttpStatus.OK);
     }
 
-    @GetMapping("/name")
-    public ResponseEntity<?> getNames() {
-        List<String> names = new ArrayList<String>();
-        names.add("Stephen Curry");
-        names.add("Kevin Durant");
-        names.add("Klay Thompson");
-        Payload payload = new Payload(names);
-        return new ResponseEntity<Payload>(payload, HttpStatus.OK);
-    }
-
-    @RequestMapping(value = {"/configuration"}, method = RequestMethod.GET)
-    public ResponseEntity<?> getConfiguration() {
-        Map javaEnvironment = System.getenv();
-        return new ResponseEntity<Map>(javaEnvironment, HttpStatus.OK);
-    }
-
-    @RequestMapping(value = {"/configuration/{pathVariable}"}, method = RequestMethod.GET)
-    public ResponseEntity<?> getConfigurationOf(@PathVariable String pathVariable) {
-        String javaEnvironment = System.getenv(pathVariable);
-        return new ResponseEntity<String>(javaEnvironment, HttpStatus.OK);
-    }
-
-
     @RequestMapping(value = {"/customer/{pathVariable}"}, method = RequestMethod.GET)
     public ResponseEntity<?> getCustomer(@PathVariable String pathVariable) {
         Customer customer = customerService.getCustomer(Long.parseLong(pathVariable));
@@ -94,8 +71,6 @@ public class Controller {
         customer = customerService.saveCustomer(customer);
         return new ResponseEntity<Object>(customer, HttpStatus.CREATED);
     }
-
-
 
 }
 

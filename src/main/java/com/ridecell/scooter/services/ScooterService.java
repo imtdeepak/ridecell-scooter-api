@@ -32,9 +32,9 @@ public class ScooterService {
 
     public List<Scooter> getAllScooters(double lat, double lng, double radius) {
         List<Scooter> scooters = scooterRepository.findAllScooterByReserved(Boolean.FALSE);
-        List<Scooter> availableScooters= new ArrayList<>();
-        for(Scooter scooter:scooters){
-            if(scooterInRadius(scooter,lat,lng,radius)){
+        List<Scooter> availableScooters = new ArrayList<>();
+        for (Scooter scooter : scooters) {
+            if (scooterInRadius(scooter, lat, lng, radius)) {
                 availableScooters.add(scooter);
             }
         }
@@ -42,9 +42,9 @@ public class ScooterService {
     }
 
     private boolean scooterInRadius(Scooter scooter, double lat, double lng, double radius) {
-        if(DistanceUtil.distanceBetweenPoints(scooter.getLastLatitude(),scooter.getLastLongitude(),lat,lng,'N') < radius){
+        if (DistanceUtil.distanceBetweenPoints(scooter.getLastLatitude(), scooter.getLastLongitude(), lat, lng, 'N') < radius) {
             return true;
-        }else
+        } else
             return false;
     }
 
@@ -57,7 +57,7 @@ public class ScooterService {
         } else {
             scooter.setReserved(Boolean.TRUE);
             scooter = saveScooter(scooter);
-            return scooter.getId()+" Reserved Successfully.";
+            return scooter.getId() + " Reserved Successfully.";
 
         }
 
@@ -70,7 +70,7 @@ public class ScooterService {
         } else if (scooter.getReserved()) {
             scooter.setReserved(Boolean.FALSE);
             scooter = saveScooter(scooter);
-            return scooter.getId()+" Returned Successfully.";
+            return scooter.getId() + " Returned Successfully.";
         } else {
             return "Already returned.";
         }

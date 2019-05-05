@@ -18,7 +18,7 @@ public class DistanceUtil {
         } else if ('N' == unit) {
             distance = distance * 0.8684;
         }
-        System.out.println("Distance = "+ distance);
+        System.out.println("Distance = " + distance);
         return distance;
 
     }

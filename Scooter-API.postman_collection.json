@@ -1,113 +1,113 @@
 {
-	"info": {
-		"_postman_id": "f7b3cdc7-c668-41e5-9e3d-cdcea83cd5f0",
-		"name": "Scooter-API",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-	},
-	"item": [
-		{
-			"name": "Get Scooters",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"sponsorState\":\"NY\"\n}"
-				},
-				"url": {
-					"raw": "http://localhost:8080/api/v1/scooters/available?lat=37.788989&lng=-122.404810&radius=48.0",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"v1",
-						"scooters",
-						"available"
-					],
-					"query": [
-						{
-							"key": "lat",
-							"value": "37.788989"
-						},
-						{
-							"key": "lng",
-							"value": "-122.404810"
-						},
-						{
-							"key": "radius",
-							"value": "48.0"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Reserve Scooter",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "http://localhost:8080/api/v1/scooters/reserve/5",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"v1",
-						"scooters",
-						"reserve",
-						"5"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Return Scooter",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "http://localhost:8080/api/v1/scooters/return/1",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"v1",
-						"scooters",
-						"return",
-						"1"
-					]
-				}
-			},
-			"response": []
-		}
-	]
+  "info": {
+    "_postman_id": "f7b3cdc7-c668-41e5-9e3d-cdcea83cd5f0",
+    "name": "Scooter-API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Get Scooters",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"sponsorState\":\"NY\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/v1/scooters/available?lat=37.788989&lng=-122.404810&radius=48.0",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "v1",
+            "scooters",
+            "available"
+          ],
+          "query": [
+            {
+              "key": "lat",
+              "value": "37.788989"
+            },
+            {
+              "key": "lng",
+              "value": "-122.404810"
+            },
+            {
+              "key": "radius",
+              "value": "48.0"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Reserve Scooter",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/v1/scooters/reserve/5",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "v1",
+            "scooters",
+            "reserve",
+            "5"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Return Scooter",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/v1/scooters/return/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "v1",
+            "scooters",
+            "return",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
 }

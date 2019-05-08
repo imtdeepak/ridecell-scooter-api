@@ -3,6 +3,7 @@ package com.ridecell.scooter;
 
 import com.ridecell.scooter.entities.Customer;
 import com.ridecell.scooter.entities.Scooter;
+import com.ridecell.scooter.model.Reservation;
 import com.ridecell.scooter.services.CustomerService;
 import com.ridecell.scooter.services.ScooterService;
 import org.slf4j.Logger;
@@ -40,10 +41,18 @@ public class Controller {
 
     //POST /api/v1/scooters/reserve?id=10
 
-    @RequestMapping(value = {"/scooters/reserve/{id}"})
-    public ResponseEntity<?> reserve(@PathVariable Long id) {
-        String reserveStatus = scooterService.reserve(id);
+    @RequestMapping(value = {"/scooters/reserve/{scooterId}/{customerId}"})
+    public ResponseEntity<?> reserve(@PathVariable Long scooterId, @PathVariable Long customerId) {
+        Reservation reserveStatus = scooterService.reserve(scooterId,customerId);
         return new ResponseEntity<Object>(reserveStatus, HttpStatus.OK);
+    }
+
+
+    @RequestMapping(value = {"/scooters/reserve"}, method = RequestMethod.POST)
+    public ResponseEntity<Reservation> updateReserve(@RequestBody(required = true) Reservation reservation) {
+        Reservation reserveStatus = scooterService.updateReserve(reservation);
+
+        return new ResponseEntity<>(reserveStatus, HttpStatus.OK);
     }
 
     @RequestMapping(value = {"/scooters/return/{id}"})

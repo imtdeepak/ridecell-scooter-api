@@ -2,10 +2,7 @@ package com.ridecell.scooter.entities;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
@@ -20,6 +17,9 @@ public class Customer implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String firstName, lastName, email;
+    private String firstName, lastName;
+
+    @Column(unique=true)
+    private String email;
 
 }
